@@ -1,28 +1,54 @@
-import logo from './logo.svg';
+import React from 'react';
+import Number from './Number';
 import './App.css';
+import {nanoid} from 'nanoid';
 
-function App() {
+
+export default function App() {
+
+  const [numbers, setNumbers] = React.useState((createNumbers()))
+
+
+
+  function generateNumber() {
+    return {
+      value: Math.random()*100 + 1,
+      isSelected: false,
+      id: nanoid()
+
+    }
+  }
+  function createNumbers() {
+    const newNums = []
+    for(let i = 0; i < 6; i++){
+      newNums.push(generateNumber())
+    }
+    return newNums
+  }
+
+
+  const numElements = numbers.map(num => (
+    <Number>
+      value = {num.value}
+      isSelected = {num.isSelected}
+      key = {num.id}
+    </Number>
+  ))
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Derek made this!!! and added this
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <main>
+      <header>
+        <h1 className="title">Digits App</h1>
+        <h3 className="subtitle">Created By: Derek Kirschbaum</h3>
       </header>
-    </div>
+      <div className="number-container">
+        {numElements}
+      </div>
+      <footer>
+
+      </footer>
+    </main>
   );
 }
-
-export default App;
