@@ -2,6 +2,7 @@ import React from 'react';
 import Number from './Number';
 import './App.css';
 import {nanoid} from 'nanoid';
+import {Slider} from 'rsuite';
 
 
 export default function App() {
@@ -42,6 +43,7 @@ export default function App() {
       <header>
         <h1 className="title">Digits App</h1>
         <h3 className="subtitle">Created By: Derek Kirschbaum</h3>
+        <Slider readOnly defaultValue={6} min={4} step={1} max={10} graduated progress />
       </header>
       <div className="number-container">
         {numElements}
