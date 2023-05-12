@@ -32,3 +32,64 @@ main {
     
     
 }
+
+footer {
+    margin-top: 25vh;
+    padding-top: 5vh;
+    text-align: center
+}
+
+.slider-container {
+    position: relative;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+/* CSS for the slider track */
+.slider {
+    top: 8px;
+    width: 20%;
+    height: 4px;
+    background-color: #e0e0e0;
+    border-radius: 3px;
+  }
+  
+  /* CSS for the slider thumb */
+  .handle {
+    width: 24px;
+    height: 24px;
+    background-color: #2196f3;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    outline: none;
+    cursor: grab;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: -9px;
+  }
+  
+  /* CSS for the hover effect on the slider thumb */
+  .handle:hover {
+    background-color: #1976d2;
+  }
+  
+  /* CSS for the active/grabbing state of the slider thumb */
+  .handle:active {
+    cursor: grabbing;
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+ 
+
+    
+    
+      
+      
+
+  
+  
+
+  
