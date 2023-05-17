@@ -5,7 +5,6 @@ import {Slider} from 'rsuite';
 import SliderComponent from './Slider';
 
 
-
 export default function App() {
 
 const [sliderValue, setSliderValue] = React.useState(6)
@@ -65,7 +64,21 @@ return (
     <div className="number-container">
         {numElements}
     </div>
-    
+    <div className="math-buttons">
+        <button className="plus">
+            +
+        </button>
+        <button className="minus">
+            -
+        </button>
+        <button className="multiplication">
+            x
+        </button>
+        <button className="division">
+            /
+        </button>
+
+    </div>
     <footer>
         <h3 className="subtitle">Created By: Derek Kirschbaum</h3>
     </footer>
