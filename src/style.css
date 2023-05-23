@@ -11,6 +11,7 @@ main {
 
 .title {
     text-align: center;
+    font-size: 5vw;
 }
 
 .number-container {
@@ -23,13 +24,13 @@ main {
     align-content: space-evenly;
     justify-content: space-evenly;
     justify-items: center;
-    border-style: solid;
-    border-color: black;
+    /*border-style: solid;
+    border-color: black;*/
     
 }
 
 
-.number-div {
+.number-button {
     width: 20vw;
     height: 20vw;
     display: flex;
@@ -40,41 +41,62 @@ main {
     justify-content: center;
     border-style: solid;
     border-color: black;
+    font-size: 200%;
+    border-color:rgba(0, 0, 0, 0.2);
+}
+
+.number-button:hover {
+    background-color: rgb(134, 206, 26);
+}
+
+.number-button:focus {
+    outline: none;
+}
+
+.number-button:active {
+    box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
 .math-buttons {
+    margin-top: 5vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     row-gap: 5vh;
-    padding: 10vh;
+    padding: 3vh;
     align-items: center;
     align-content: space-evenly;
     justify-content: space-evenly;
     justify-items: center;
-    /*border-style: solid;
-    border-color: black;*/
+    border-style: dashed;
+    border-color: rgb(172, 172, 172);
+    border-radius: 25px;
+    background-color:whitesmoke;
 }
 
-.plus, .minus, .multiplication, .division {
+.operation-button {
     width: 10vw;
     height: 10vw;
+    display: flex;
     border-radius: 50%;
-    font-size: 5vw;
-    text-align: center;
+    font-size: 150%;
     align-items: center;
+    text-align:center;
+    justify-content: center;
+    margin: auto;
     background-color: aqua;
     border-color:rgba(0, 0, 0, 0.2);
 }
 
-.plus:focus, .minus:focus, .multiplication:focus, .division:focus {
+
+.operation-button:focus {
     outline: none;
 }
 
-.plus:active, .minus:active, .multiplication:active, .division:active {
+.operation-button:active {
     box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
-.plus:hover, .minus:hover, .multiplication:hover, .division:hover {
+.operation-button:hover {
     background-color: rgba(45,205,255, 50);
 }
 
@@ -91,6 +113,7 @@ main {
 .number-label {
     padding-right: 1vw;
     margin-top: 2vw;
+    font-size: 1.5vw;
 }
 
 .slider-container {

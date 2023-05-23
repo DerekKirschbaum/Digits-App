@@ -1,44 +1,98 @@
 import React from 'react';
 import Number from './Number';
 import {nanoid} from 'nanoid';
-import {Slider} from 'rsuite';
+//import {Slider} from 'rsuite';
 import SliderComponent from './Slider';
+import Operation from './Operation'
 
 
 export default function App() {
 
 const [sliderValue, setSliderValue] = React.useState(6)
-const [numbers, setNumbers] = React.useState((createNumbers(6)))
+const [numbers, setNumbers] = React.useState(createNumbers(6))
+const [operations, setOperations] = React.useState(createOps())
 
-const handleChange = (value) => {
+
+//Slider change handler
+const handleSliderChange = (value) => {
     setSliderValue(value);
     setNumbers(createNumbers(value))
+    setOperations(createOps())
 };
 
-function generateNumber() {
-    return {
-    value: Math.ceil(Math.random()*100),
-    isSelected: false,
-    id: nanoid()
-    }
-}
+
+//Number state and helper functions
 function createNumbers(value) {
     const newNums = []
     for(let i = 0; i < value; i++){
-    newNums.push(generateNumber())
-    console.log(newNums[i])
-    console.log("i")
+        newNums.push(generateNumber())
     }
-    console.log("Here")
     return newNums
 }
 
+function generateNumber() {
+    return {
+        value: Math.ceil(Math.random()*100),
+        isSelected: false,
+        id: nanoid()
+    }
+}
+
+function selectNum(id) {
+    setNumbers(oldNums => oldNums.map(num => {
+        return num.id === id ? 
+            {...num, isSelected: true} :
+            {...num, isSelected: false}
+    }))
+}
 
 const numElements = numbers.map(num => (
     <Number
+        key = {num.id}
         value = {num.value}
         isSelected = {num.isSelected}
-        key = {num.id}
+        selectNum = {() => selectNum(num.id)}
+    />
+))
+
+
+
+//Operation state and helper functions
+function createOps () {
+    const ops=[]
+    ops.push(generateOp("+"))
+    ops.push(generateOp("-"))
+    ops.push(generateOp("x"))
+    ops.push(generateOp("/"))
+    console.log("Here")
+    
+    return ops
+}
+
+function generateOp(op) {
+    return {
+        type: op,
+        isSelected: false,
+        id: nanoid()
+    }
+}
+
+function selectOp(id) {
+    setOperations(oldOps => oldOps.map(op => {
+        return op.id === id ? 
+            {...op, isSelected: true} :
+            {...op, isSelected: false}
+    }))
+}
+
+const mathButtons = operations.map(op => (
+    
+    <Operation
+        key = {op.id}
+        type = {op.type}
+        isSelected = {op.isSelected}
+        selectOp = {() => selectOp(op.id)}
+        
     />
 ))
 
@@ -56,7 +110,7 @@ return (
             max={9}
             step={1}
             defaultValue={6}
-            onChange={handleChange}
+            onChange={handleSliderChange}
             disable={false}
         />
         <h3>Value: {sliderValue}</h3>
@@ -65,19 +119,7 @@ return (
         {numElements}
     </div>
     <div className="math-buttons">
-        <button className="plus">
-            +
-        </button>
-        <button className="minus">
-            -
-        </button>
-        <button className="multiplication">
-            x
-        </button>
-        <button className="division">
-            /
-        </button>
-
+        {mathButtons}
     </div>
     <footer>
         <h3 className="subtitle">Created By: Derek Kirschbaum</h3>
